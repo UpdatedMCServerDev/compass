@@ -9,20 +9,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 /**
- * Created by Bannwart on 17/03/2016.
+ * Created by ETblaky/GarotoET on 17/03/2016.
  */
+
 public class MinigamesInventory {
 
-    private static Inventory inv;
+    private static Inventory inv = Bukkit.createInventory(null, 54, "Choose a Minigame");
     private static int[] border = new int[] {0,1,2,3,4,5,6,7,8, 9,17, 18,26, 27,35, 36,44, 45,46, 47,48,49,50,51,52,53};
 
-    public MinigamesInventory(){
-        inv = Bukkit.createInventory(null, 45, "Choose a Minigame");
-    }
 
+    @SuppressWarnings("deprecation")
     public static Inventory getInv() {
 
         for(int i : border){
+            System.out.println(i);
             inv.setItem(i, new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData()));
         }
 

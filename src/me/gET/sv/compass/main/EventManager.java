@@ -12,13 +12,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 /**
- * Created by Bannwart on 17/03/2016.
+ * Created by ETblaky/GarotoET on 17/03/2016.
  */
+
 public class EventManager implements Listener{
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent e){
-        if(e.getAction() != Action.RIGHT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if(e.getPlayer().getInventory().getItemInMainHand().getType() != Material.COMPASS) return;
         if(!(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "Minigames"))) return;
 
@@ -35,13 +35,14 @@ public class EventManager implements Listener{
             //p.teleport(ElytraLobby);
         }
         e.setCancelled(true);
+        e.getWhoClicked().closeInventory();
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         ItemStack is = new ItemStack(Material.COMPASS);
         ItemMeta im = is.getItemMeta();
-        im.setDisplayName("Minigames");
+        im.setDisplayName(ChatColor.GREEN + "Minigames");
         is.setItemMeta(im);
         e.getPlayer().getInventory().setItem(0, is);
     }
